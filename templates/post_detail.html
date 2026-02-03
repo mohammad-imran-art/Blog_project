@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- responsive design -->
+    <title>Blog</title> <!-- page title -->
+</head>
+<body>
+    <div>
+    {% extends "base.html" %} 
+    {% block content %} 
+    <h1>{{ post.title }}</h1> 
+    <p>{{ post.author.username }} - {{ post.date_posted }}</p>
+    <p>{{ post.content }}</p>
+    
+    </div>
+    <div>
+  {% if user == post.author%}
+        <a href="{% url 'update_post' post.pk %}">Edit</a>
+        <a href="{% url 'delete_post' post.pk %}">Delete</a>
+        {% endif %}
+    </dive>
+        {% endblock %}
+</body>
+</html>
